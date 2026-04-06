@@ -120,6 +120,7 @@ Custom routing rules were introduced to:
 * 🧠 Developing **IT Intern Skill Agent**
 
   * Automating daily technical and operational tasks
+  The IT Intern Skill serves as the ecosystem's 'Patient Zero'—a self-optimizing tool used to automate internal troubleshooting and network logging, proving the system's utility before departmental scaling.
 
 ---
 
@@ -134,6 +135,7 @@ Custom routing rules were introduced to:
 * No sensitive departmental data is stored
 * No data used for model training
 * Strict separation between processing and storage
+  Data is protected via Tailscale’s end-to-end encrypted tunnels, ensuring that departmental traffic remains isolated from the public internet
 
 #### 2. Secure Network Architecture
 
