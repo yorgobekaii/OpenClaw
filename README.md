@@ -157,10 +157,13 @@ A dedicated **post-development audit phase** will include:
 
 This section will include:
 
-* System architecture diagrams
-* Agent communication flows
-* Routing logic (SOUL.mg)
-* Pseudocode for orchestration
+graph TD
+    A[User Request] --> B{SOUL.mg Router}
+    B -- "HR Query" --> C[HR Agent]
+    B -- "IT Task" --> D[IT Assistant Skill]
+    B -- "Accounting" --> E[Accounting Agent]
+    C --> F[Cheap/Free Model A]
+    D --> G[Local/WSL Model B]
 
 ---
 
