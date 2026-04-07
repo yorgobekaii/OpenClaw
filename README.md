@@ -185,14 +185,46 @@ This section will include:
 ## 📁 Repository Structure (to be impelemented)
 
 ```
-OpenClaw/
+.openclaw/
 │
-├── agents/                # Departmental agents
-├── configs/               # Routing & token configs
-├── scripts/               # Automation & cron jobs
+├── agents/                # Core agent configurations (multi-agent system)
+│   ├── main/              # Primary orchestrator agent
+│   └── gemini/            # External/experimental agent integrations
+│
+├── subagents/             # Dynamically created specialized agents
+│
+├── workspace/             # Core system logic & intelligence layer
+│   ├── SOUL.md            # Routing & decision logic (core brain)
+│   ├── AGENTS.md          # Agent definitions & behaviors
+│   ├── TOOLS.md           # Tooling system & integrations
+│   ├── MEMORY.md          # Memory architecture design
+│   ├── IDENTITY.md        # Agent identity & role structure
+│   └── skills/            # Modular skill system
+│       ├── agentmail/     # Email automation skill
+│       ├── network-speed-monitor/
+│       ├── automation-workflows/
+│       ├── playwright-mcp/
+│       └── summarize/
+│
+├── cron/                  # Scheduled automation jobs
+│   └── jobs.json
+│
+├── configs/               # (Logical grouping for explanation)
+│   ├── openclaw.json      # Main system configuration
+│   └── exec-approvals.json
+│
+├── credentials/           # External integrations (Telegram, etc.)
+├── devices/               # Device pairing & identity management
+├── identity/              # Node/device authentication
+│
+├── cache/                 # Model/provider cache (e.g. OpenRouter)
+├── logs/                  # System logs (excluded from version control)
+├── memory/                # Local memory database (SQLite)
+│
 ├── docs/
 │   └── MODEL_EVALUATION.md
-├── README.md
+│
+└── workspace/memory/      # Structured long-term agent memory logs
 ```
 
 ---
@@ -201,7 +233,11 @@ OpenClaw/
 
 This project is actively under development and evolving.
 Architecture, model selection, and system design are continuously being refined.
+# 🔐 Security & Configuration
 
+Sensitive data such as API keys and tokens are managed via environment variables and are never stored in the repository.
+
+A `.env.example` file is provided as a template for required configuration.
 ---
 
 ## 🚀 Next Steps
