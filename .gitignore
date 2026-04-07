@@ -1,0 +1,10 @@
+agents/**/sessions/
+logs/
+memory/
+tasks/
+media/
+delivery-queue/
+cron/runs/
+*.sqlite*
+*.jsonl
+*.log

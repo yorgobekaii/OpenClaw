@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "42439db3-4913-440f-b741-0450404096fd",
+      "agentId": "main",
+      "sessionKey": "agent:main:main",
+      "name": "network-speedtest-chat-summary",
+      "enabled": true,
+      "createdAtMs": 1774437035565,
+      "updatedAtMs": 1775566805416,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8,10,12,14,16 * * *",
+        "tz": "Asia/Beirut"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run `python3 skills/network-speed-monitor/scripts/run_speedtest.py`. Send only the printed output.",
+        "lightContext": true,
+        "model": "google/gemini-3.1-flash-lite-preview"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "telegram:7134989286",
+        "bestEffort": true
+      },
+      "state": {
+        "nextRunAtMs": 1775624400000,
+        "lastRunAtMs": 1775566800839,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 4577,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 5,
+        "lastDelivered": true,
+        "lastError": "404 No endpoints found for qwen/qwen3.6-plus-preview:free."
+      }
+    }
+  ]
+}

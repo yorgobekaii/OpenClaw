@@ -1,0 +1,328 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.4.1",
+    "lastTouchedAt": "2026-04-02T08:36:40.554Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-02T08:36:40.468Z",
+    "lastRunVersion": "2026.4.1",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openai-codex:default": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      },
+      "openai-codex:shareq.org@gmail.com": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      },
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+        "apiKey": "${GOOGLE_API_KEY}",
+        "models": [
+          {
+            "id": "gemini-3.1-flash-lite-preview",
+            "name": "Gemini Flash",
+            "input": [
+              "text"
+            ]
+          }
+        ]
+      },
+      "openai-codex": {
+        "baseUrl": "https://api.openai.com/v1",
+        "apiKey": "${OPENAI_API_KEY}",
+        "models": []
+      },
+      "openrouter": {
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "apiKey": "${OPENROUTER_API_KEY}",
+        "models": [
+          {
+            "id": "qwen/qwen3.6-plus-preview:free",
+            "name": "Qwen 3.6 Plus",
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "nvidia/nemotron-3-super-120b-a12b:free",
+            "name": "Nemotron 120B",
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "stepfun/step-3.5-flash:free",
+            "name": "Step 3.5 Flash",
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "qwen/qwen3-coder:free",
+            "name": "Qwen Coder",
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "nvidia/nemotron-nano-12b-v2-vl:free",
+            "name": "Nemotron Nano VL",
+            "input": [
+              "text",
+              "image"
+            ]
+          },
+          {
+            "id": "meta-llama/llama-3.3-70b-instruct:free",
+            "name": "LLaMA 70B",
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "nousresearch/hermes-3-llama-3.1-405b:free",
+            "name": "Hermes 405B",
+            "input": [
+              "text"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/qwen/qwen3.6-plus-preview:free",
+        "fallbacks": [
+          "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
+          "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+          "openrouter/nousresearch/hermes-3-llama-3.1-405b:free"
+        ]
+      },
+      "models": {
+        "openai-codex/gpt-5.4": {
+          "alias": "gpt-5.4",
+          "params": { "cacheRetention": "long" } 
+        },
+        "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
+          "alias": "nemotron-120b",
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/qwen/qwen3.6-plus-preview:free": {
+          "alias": "qwen3.6-plus",
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/stepfun/step-3.5-flash:free": {
+          "alias":"step-3.5-flash",
+          "params": { "cacheRetention": "short" }
+        },
+        "openrouter/qwen/qwen3-coder:free": {
+          "alias": "qwen3-coder"
+        },
+        "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {
+          "alias": "nemotron-nano-vl"
+        },
+        "openrouter/meta-llama/llama-3.3-70b-instruct:free": {
+          "alias": "llama-3.3-70b"
+        },
+        "openrouter/nousresearch/hermes-3-llama-3.1-405b:free": {
+          "alias": "hermes-405b"
+        }
+      },
+      "heartbeat": {
+        "every": "1h",
+        "model": "ollama/llama3.2:3b",
+        "session": "main",
+        "target": "slack",
+        "prompt": "Briefly check: any blockers, pending tasks, or reminders?"
+      },
+      "workspace": "/home/yorgo/.openclaw/workspace"
+    },
+    "list": [
+      {
+        "id": "main",
+        "skills": [
+          "apple-notes",
+          "apple-reminders",
+          "bear-notes",
+          "blogwatcher",
+          "blucli",
+          "bluebubbles",
+          "camsnap",
+          "clawhub",
+          "coding-agent",
+          "discord",
+          "eightctl",
+          "gemini",
+          "gh-issues",
+          "gifgrep",
+          "github",
+          "gog",
+          "goplaces",
+          "healthcheck",
+          "himalaya",
+          "imsg",
+          "mcporter",
+          "model-usage",
+          "nano-pdf",
+          "node-connect",
+          "notion",
+          "obsidian",
+          "openai-whisper",
+          "openai-whisper-api",
+          "openhue",
+          "oracle",
+          "ordercli",
+          "peekaboo",
+          "sag",
+          "session-logs",
+          "sherpa-onnx-tts",
+          "skill-creator",
+          "slack",
+          "songsee",
+          "sonoscli",
+          "spotify-player",
+          "summarize",
+          "things-mac",
+          "tmux",
+          "trello",
+          "video-frames",
+          "voice-call",
+          "wacli",
+          "weather",
+          "xurl"
+        ]
+      }
+    ]
+  },
+  "tools": {
+    "profile": "coding",
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "gemini"
+      }
+    },
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "webchat": [
+          "openclaw-control-ui"
+        ]
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "diagnostics": {
+    "cacheTrace": {
+    "enabled": true
+}
+},
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "${BOT_TOKEN}",
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      },
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": {
+        "source": "env",
+        "provider": "default",
+        "id": "GATEWAY_TOKEN"
+      }
+    },
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send"
+      ]
+    },
+    "controlUi": {
+      "allowedOrigins": [
+        "https://pc-25.tail82171b.ts.net"
+      ]
+    }
+  },
+  "skills": {
+    "entries": {
+      "openai-whisper-api": {
+        "apiKey": "${OPENAI_API_KEY}"
+      },
+      "1password": {
+        "enabled": false
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "google": {
+        "enabled": true,
+        "config": {
+          "webSearch": {
+            "apiKey": "${GOOGLE_API_KEY}"
+          }
+        }
+      }
+    }
+  }
+}

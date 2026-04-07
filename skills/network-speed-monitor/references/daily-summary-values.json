@@ -1,0 +1,1 @@
+[["Daily Network Summary", "", "", "", "", "", "", ""], ["date", "runs", "avg_download_mbps", "avg_upload_mbps", "avg_ping_ms", "worst_status", "best_download_mbps", "notes"], ["2026-03-27", 10, 57.68, 26.85, 91.99, "unstable", 88.73, "At least one unstable run. Review congestion, Wi-Fi quality, and ISP path."]]
