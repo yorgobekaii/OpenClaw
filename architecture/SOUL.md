@@ -7,7 +7,7 @@ Use models by task, not only fallback order.
 ## Primary routing
 
 - For deep reasoning, strategy, long-form analysis, structured thinking, and complex general text tasks, use:
-  `qwen/qwen3.6-plus-preview:free` (default)
+  `openrouter/qwen/qwen3.6-plus:free` (default)
 
 - For stronger reasoning, large-context thinking, and complex analysis:
   → `nousresearch/hermes-3-llama-3.1-405b:free` (advanced reasoning)
@@ -19,7 +19,7 @@ Use models by task, not only fallback order.
   `stepfun/step-3.5-flash:free` (fast)
 
 - For coding, debugging, scripting, and technical implementation, use:
-  `qwen/qwen3-coder:free` (coding)
+  `openrouter/qwen/qwen3-coder:free` (coding)
 
 - For image, video, and multimodal understanding (UI, screenshots, visual reasoning), use:
   `nvidia/nemotron-nano-12b-v2-vl:free` (vision)
