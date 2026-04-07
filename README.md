@@ -225,8 +225,6 @@ This section will include:
 ├── logs/                  # System logs (excluded from version control)
 ├── memory/                # Local memory database (SQLite)
 │
-├── docs/
-│   └── MODEL_EVALUATION.md
 │
 └── workspace/memory/      # Structured long-term agent memory logs
 ```

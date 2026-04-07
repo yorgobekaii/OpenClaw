@@ -4,12 +4,22 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/gog_env.sh"
 
+GOG_BIN="${GOG_BIN:-$(command -v gog 2>/dev/null || true)}"
+if [[ -z "$GOG_BIN" && -x "/home/linuxbrew/.linuxbrew/bin/gog" ]]; then
+  GOG_BIN="/home/linuxbrew/.linuxbrew/bin/gog"
+fi
+
+if [[ -z "$GOG_BIN" || ! -x "$GOG_BIN" ]]; then
+  echo "gog CLI not found" >&2
+  exit 127
+fi
+
 SHEET_ID="1yOUa-F6o7-5CtnRnKxkjLxjvNwrYhch_LSPuQMNjfEs"
 TAB="Speed Log"
 ACCOUNT="shareq.org@gmail.com"
 JSON_PATH="$1"
 
-python3 - "$JSON_PATH" <<'PY' | gog sheets append "$SHEET_ID" "${TAB}!A:O" --account "$ACCOUNT" --values-json @- --insert INSERT_ROWS
+python3 - "$JSON_PATH" <<'PY' | "$GOG_BIN" sheets append "$SHEET_ID" "${TAB}!A:O" --account "$ACCOUNT" --values-json @- --insert INSERT_ROWS
 import json, sys, datetime as dt
 path = sys.argv[1]
 with open(path, 'r', encoding='utf-8') as f:

@@ -223,6 +223,9 @@
       "allowFrom": {
         "webchat": [
           "openclaw-control-ui"
+        ],
+        "telegram": [
+          "7134989286"
         ]
       }
     }
