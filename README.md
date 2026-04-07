@@ -8,6 +8,10 @@ OpenClaw is a modular, cost-efficient AI agent ecosystem designed to support mul
 
 Developed within a real-world NGO environment, this project focuses on delivering **enterprise-grade AI capabilities under strict budget constraints**, while maintaining a **security-first and privacy-conscious architecture**.
 
+## 🧠 AI Platform Evaluation (Pre-OpenClaw Decision)
+We evaluated multiple AI platforms before choosing OpenClaw.
+
+👉 See full comparison here: [AI Platform Evaluation](docs/ai-platform-evaluation.md)
 ---
 
 ## 👤 Author
