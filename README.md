@@ -107,6 +107,49 @@ Custom routing rules were introduced to:
 
 ---
 
+## 🚀 Quick Start (WSL)
+
+OpenClaw is currently designed to run inside **WSL** on Windows.
+
+### 1) Open your WSL terminal
+Use your preferred distro, for example:
+
+- Ubuntu on WSL
+
+### 2) Clone the repository inside WSL
+```bash
+git clone https://github.com/yourusername/openclaw.git
+cd openclaw
+```
+### 3) Create your environment file
+```bash
+cp .env.example .env
+```
+Then edit .env and add your required API keys and configuration.
+
+### 4) Install dependencies
+```bash
+npm install
+```
+
+### 5) Start OpenClaw
+```bash
+npm run start
+```
+### 6) Open your Openclaw dashboard
+```bash
+openclaw dashboard
+```
+#### 📝 WSL Notes
+Run this project inside WSL, not from Windows Command Prompt.
+Keep the repository in the Linux filesystem for better performance and fewer permission issues.
+Example recommended location:
+```bash
+/home/yourusername/projects/openclaw
+```
+If you use tools that depend on Linux paths, always reference WSL paths rather than ```bash C:\....```
+
+
 ## 🧪 Current Technical Work
 
 * 🔧 Optimizing **cron jobs** for automated workflows
