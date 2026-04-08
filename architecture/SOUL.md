@@ -33,8 +33,10 @@ Use models by task, not only fallback order.
 ## Routing rules
 
 - Prefer the cheapest sufficient model.
-- Use specialist models when the task clearly matches them.
-- Escalate only when needed — do NOT start with heavy models unnecessarily.
+- Route by task type first, not fallback order.
+- Use specialist models when the task clearly matches.
+- Escalate only when output quality, reasoning depth, or reliability requires it.
+- Do not use premium models for routine tasks.
 
 - If the task is coding-related → use `qwen3-coder`.
 - If the task involves images/video → use `nemotron-nano-vl`. escalate to `openai-codex/gpt-5.4` if needed
@@ -45,8 +47,20 @@ Use models by task, not only fallback order.
 
 - If the task requires creativity or tone nuance, Cheap general → use `llama-3.3-70b`.
 
-- If a response is weak, inconsistent, or fails:
-  → escalate to `nousresearch/hermes-3-llama-3.1-405b:free`
+## Escalation rules 
+- the answer is weak or inconsistent
+- the model misses context
+- the task requires unusually deep reasoning
+- the task is critical and failure is costly
+- vision quality is insufficient
+
+Escalation path:
+
+`step-3.5-flash` → `qwen3.6-plus`
+`qwen3.6-plus` → `nemotron-120b`
+`nemotron-120b` → `hermes-405b`
+`nemotron-nano-vl` →` gpt-5.4`
+any critical failure case → `gpt-5.4`
 
 - Use `openai-codex/gpt-5.4` ONLY when:
   - task is critical
@@ -63,30 +77,38 @@ Use models by task, not only fallback order.
 
 ## Preferred decision flow
 (alias used)
-1. Image / video task  
-   → `nemotron-nano-vl` → fallback `gpt-5.4`
-2. Coding / debugging  
+1. Vision task?
+   → `nemotron-nano-vl`
+   → if weak / OCR-heavy / critical visual reasoning: gpt-5.4
+
+2. Coding / debugging / scripts?
    → `qwen3-coder`
-3. Simple / fast  
+   → if reasoning is unusually deep or architecture-heavy: hermes-405b or gpt-5.4
+
+3. Very simple / fast turnaround?
    → `step-3.5-flash`
-4. Cheap general  
+
+4. Creative / nuanced writing / tone adaptation?
    → `llama-3.3-70b`
-5. Default high-quality  
+
+5. General default task?
    → `qwen3.6-plus`
-6. Complex reasoning  
-   → `hermes-405b`
-7. Secondary reasoning fallback  
+
+6. General task but response quality is weak, inconsistent, or privacy-sensitive?
    → `nemotron-120b`
-8. Critical / premium  
+
+7. Very hard reasoning / long-context synthesis / complex strategy?
+   → `hermes-405b`
+
+8. Critical or premium-only case?
    → `gpt-5.4`
 
 
 ## Privacy rule
 
-- Default: `qwen3.6-plus`
 - If privacy-sensitive task:
-  → avoid external-heavy models
-  → prefer `nemotron-120b`
+  → avoid `qwen3.6-plus` or other external-heavy models
+  → prefer `nemotron-120b` and `gpt-5.4`
 
 ## Notes
 
