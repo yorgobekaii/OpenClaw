@@ -8,6 +8,15 @@ OpenClaw is a modular, cost-efficient AI agent ecosystem designed to support mul
 
 Developed within a real-world NGO environment, this project focuses on delivering **enterprise-grade AI capabilities under strict budget constraints**, while maintaining a **security-first and privacy-conscious architecture**.
 
+OpenClaw uses **task-based routing** to select the most efficient model based on:
+- task type
+- reasoning complexity
+- cost constraints
+
+This routing system is implemented in `SOUL.md` and is tightly integrated with **token management logic** to enforce cost control.
+
+**Priority:** cost → speed → quality
+
 ## 🧠 AI Platform Evaluation (Pre-OpenClaw Decision)
 We evaluated multiple AI platforms before choosing OpenClaw.
 
@@ -199,6 +208,60 @@ A dedicated **post-development audit phase** will include:
 * System hardening
 
 ---
+## 🧠 Model Strategy
+
+OpenClaw uses **task-based routing** to select the most efficient model based on:
+- task type
+- reasoning complexity
+- cost constraints
+
+**Priority:** cost → speed → quality
+
+---
+
+### 🔹 Model Roles
+
+| Model | Role | Use Case |
+|------|------|---------|
+| `qwen3.6-plus` | Default | General tasks, analysis, structured responses |
+| `step-3.5-flash` | Fast | Simple queries, quick summaries |
+| `qwen3-coder` | Coding | Debugging, scripts, implementation |
+| `nemotron-nano-vl` | Vision | Images, UI, screenshots |
+| `llama-3.3-70b` | Creative | Writing, tone, content generation |
+| `nemotron-120b` | Reasoning | Stronger logic, privacy-sensitive tasks |
+| `hermes-405b` | Deep reasoning | Complex problems, long-context tasks |
+| `gpt-5.4` | Premium | Critical tasks, fallback, high-precision vision |
+
+---
+
+### 🔀 Routing Logic
+
+- Vision → `nemotron-nano-vl` → fallback `gpt-5.4`
+- Coding → `qwen3-coder`
+- Simple / fast → `step-3.5-flash`
+- Creative → `llama-3.3-70b`
+- Default → `qwen3.6-plus`
+
+---
+
+### 📈 Escalation
+
+Escalate only when needed:
+
+`flash → qwen → nemotron → hermes → gpt-5.4`
+
+---
+
+### 🔐 Rules
+
+- Prefer the **cheapest sufficient model**
+- Use **specialist models** when applicable
+- Avoid premium models for simple tasks
+- For sensitive tasks → prefer `qwen3.6-plus` or `nemotron-120b`
+
+---
+
+> Start lightweight. Escalate only when necessary.
 
 ## 🧱 Architecture & Logic
 
