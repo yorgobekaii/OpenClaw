@@ -115,6 +115,9 @@ Custom routing rules were introduced to:
 📌 **Status:** Ongoing refinement — additional routing strategies to be specified.
 
 ---
+## Installation Requirements
+
+For detailed installation instructions and system requirements, see [Requirements](docs\Requirements.md).
 
 ## 🚀 Quick Start (WSL)
 
@@ -336,6 +339,15 @@ This section will include:
 ```
 
 ---
+## ✨ Key Features
+
+- 🧠 Multi-agent architecture
+- 💸 Cost-aware model routing
+- 🔄 Automatic fallback on rate limits
+- 🔐 Privacy-first (ZDR enforced)
+- 🖥️ Local-first deployment (WSL)
+- 🌐 Secure networking (Tailscale)
+- ⚙️ Modular skill system
 
 ## 📌 Important Note
 
