@@ -17,11 +17,34 @@ This routing system is implemented in `SOUL.md` and is tightly integrated with *
 
 **Priority:** cost → speed → quality
 
+## ❗ The Problem
+
+NGOs often face:
+
+* Limited budgets for AI infrastructure
+* High costs of enterprise AI solutions
+* Lack of tailored tools for internal workflows
+
+**OpenClaw addresses this by:**
+
+* Leveraging **open and free model ecosystems**
+* Implementing **custom routing and token control**
+* Designing **modular agents per department**
+
 ## 🧠 AI Platform Evaluation (Pre-OpenClaw Decision)
 We evaluated multiple AI platforms before choosing OpenClaw.
 
 👉 See full comparison here: [AI Platform Evaluation](docs/ai-platform-evaluation.md)
 ---
+
+## 🌍 Why OpenClaw Matters
+
+AI is becoming essential—but inaccessible for many NGOs due to cost.
+
+OpenClaw proves that:
+- powerful AI systems can be built with minimal cost
+- privacy does not need to be sacrificed
+- small teams can deploy enterprise-level AI workflows
 
 ## 👤 Author
 
@@ -45,19 +68,52 @@ To build a scalable ecosystem of **department-specific AI agents** (HR, Accounti
 
 ---
 
-## ❗ The Problem
+## Installation Requirements
 
-NGOs often face:
+For detailed installation instructions and system requirements, see [Requirements](docs\Requirements.md).
 
-* Limited budgets for AI infrastructure
-* High costs of enterprise AI solutions
-* Lack of tailored tools for internal workflows
 
-**OpenClaw addresses this by:**
+## 🚀 Quick Start (WSL)
 
-* Leveraging **open and free model ecosystems**
-* Implementing **custom routing and token control**
-* Designing **modular agents per department**
+OpenClaw is currently designed to run inside **WSL** on Windows.
+
+### 1) Open your WSL terminal
+Use your preferred distro, for example:
+
+- Ubuntu on WSL
+
+### 2) Clone the repository inside WSL
+```bash
+git clone https://github.com/yourusername/openclaw.git
+cd openclaw
+```
+### 3) Create your environment file
+```bash
+cp .env.example .env
+```
+Then edit .env and add your required API keys and configuration.
+
+### 4) Install dependencies
+```bash
+npm install
+```
+
+### 5) Start OpenClaw
+```bash
+npm run start
+```
+### 6) Open your Openclaw dashboard
+```bash
+openclaw dashboard
+```
+#### 📝 WSL Notes
+Run this project inside WSL, not from Windows Command Prompt.
+Keep the repository in the Linux filesystem for better performance and fewer permission issues.
+Example recommended location:
+```bash
+/home/yourusername/projects/openclaw
+```
+If you use tools that depend on Linux paths, always reference WSL paths rather than ```bash C:\....```
 
 ---
 
@@ -115,52 +171,6 @@ Custom routing rules were introduced to:
 📌 **Status:** Ongoing refinement — additional routing strategies to be specified.
 
 ---
-## Installation Requirements
-
-For detailed installation instructions and system requirements, see [Requirements](docs\Requirements.md).
-
-## 🚀 Quick Start (WSL)
-
-OpenClaw is currently designed to run inside **WSL** on Windows.
-
-### 1) Open your WSL terminal
-Use your preferred distro, for example:
-
-- Ubuntu on WSL
-
-### 2) Clone the repository inside WSL
-```bash
-git clone https://github.com/yourusername/openclaw.git
-cd openclaw
-```
-### 3) Create your environment file
-```bash
-cp .env.example .env
-```
-Then edit .env and add your required API keys and configuration.
-
-### 4) Install dependencies
-```bash
-npm install
-```
-
-### 5) Start OpenClaw
-```bash
-npm run start
-```
-### 6) Open your Openclaw dashboard
-```bash
-openclaw dashboard
-```
-#### 📝 WSL Notes
-Run this project inside WSL, not from Windows Command Prompt.
-Keep the repository in the Linux filesystem for better performance and fewer permission issues.
-Example recommended location:
-```bash
-/home/yourusername/projects/openclaw
-```
-If you use tools that depend on Linux paths, always reference WSL paths rather than ```bash C:\....```
-
 
 ## 🧪 Current Technical Work
 
@@ -183,34 +193,16 @@ If you use tools that depend on Linux paths, always reference WSL paths rather t
 
 ---
 
-## 🔐 Security & Privacy Approach
+## ✨ Key Features
 
-> Security is integrated into the system design—not added later.
+- 🧠 Multi-agent architecture
+- 💸 Cost-aware model routing
+- 🔄 Automatic fallback on rate limits
+- 🔐 Privacy-first (ZDR enforced)
+- 🖥️ Local-first deployment (WSL)
+- 🌐 Secure networking (Tailscale)
+- ⚙️ Modular skill system
 
-### 🛡️ Core Principles
-
-#### 1. Zero Data Retention (ZDR)
-
-* No sensitive departmental data is stored
-* No data used for model training
-* Strict separation between processing and storage
-  Data is protected via Tailscale’s end-to-end encrypted tunnels, ensuring that departmental traffic remains isolated from the public internet
-
-#### 2. Secure Network Architecture
-
-* Tailscale-based private network overlay
-* Encrypted communication between nodes
-
-#### 3. Future Security Phase
-
-A dedicated **post-development audit phase** will include:
-
-* Threat modeling
-* Vulnerability identification
-* Exploit analysis
-* System hardening
-
----
 ## 🧠 Model Strategy
 
 OpenClaw uses **task-based routing** to select the most efficient model based on:
@@ -279,6 +271,35 @@ This section will include:
 
 ---
 
+## 🔐 Security & Privacy Approach
+
+> Security is integrated into the system design—not added later.
+
+### 🛡️ Core Principles
+
+#### 1. Zero Data Retention (ZDR)
+
+* No sensitive departmental data is stored
+* No data used for model training
+* Strict separation between processing and storage
+  Data is protected via Tailscale’s end-to-end encrypted tunnels, ensuring that departmental traffic remains isolated from the public internet
+
+#### 2. Secure Network Architecture
+
+* Tailscale-based private network overlay
+* Encrypted communication between nodes
+
+#### 3. Future Security Phase
+
+A dedicated **post-development audit phase** will include:
+
+* Threat modeling
+* Vulnerability identification
+* Exploit analysis
+* System hardening
+
+---
+
 ## 🗺️ Roadmap
 
 | Category                   | Task                               | Status         |
@@ -339,15 +360,6 @@ This section will include:
 ```
 
 ---
-## ✨ Key Features
-
-- 🧠 Multi-agent architecture
-- 💸 Cost-aware model routing
-- 🔄 Automatic fallback on rate limits
-- 🔐 Privacy-first (ZDR enforced)
-- 🖥️ Local-first deployment (WSL)
-- 🌐 Secure networking (Tailscale)
-- ⚙️ Modular skill system
 
 ## 📌 Important Note
 
