@@ -70,7 +70,7 @@ To build a scalable ecosystem of **department-specific AI agents** (HR, Accounti
 
 ## Installation Requirements
 
-For detailed installation instructions and system requirements, see [Requirements](docs\requirements.md)
+For detailed installation instructions and system requirements, see [Requirements](docs/requirements.md)
 
 
 ## 🚀 Quick Start (WSL)
