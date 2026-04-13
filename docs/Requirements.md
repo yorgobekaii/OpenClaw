@@ -9,7 +9,7 @@ To successfully install and run OpenClaw on a fresh device, follow the steps and
     *   **Linux** (Recommended: Ubuntu/Debian)
         
     *   **macOS**
-        
+    
     *   **Windows** (WSL2 recommended for full compatibility)
         
 *   **Best Practical Setup:**
