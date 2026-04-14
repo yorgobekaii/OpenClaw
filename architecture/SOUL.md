@@ -2,108 +2,80 @@
  MODEL ROUTING RULES — READ BEFORE EVERY TASK
 ===================================================
 
-Use models by task, not only fallback order.
+Use models by task strength, not only fallback order. 
+Prioritize the primary model for context-heavy tasks and escalate only when necessary.
 
-## Primary routing
+## Primary Routing (By Strength)
 
-- For deep reasoning, strategy, long-form analysis, structured thinking, and complex general text tasks, use:
-  `openrouter/qwen/qwen3.6-plus:free` (default)
+- **Primary / Large Context / Multimodal:**
+  `google/gemini-3-flash-preview` (Default for general tasks)
 
-- For stronger reasoning, large-context thinking, and complex analysis:
-  → `nousresearch/hermes-3-llama-3.1-405b:free` (advanced reasoning)
+- **Deep Reasoning / Strategy / Long-form Analysis:**
+  `openrouter/qwen/qwen3.6-plus:preview` (Logic specialist)
 
-- For secondary and privacy concerns, high-quality reasoning, large-context understanding, and strong general intelligence tasks, use:
-  `nvidia/nemotron-3-super-120b-a12b:free` (default #2)
+- **Coding / Debugging / Scripting:**
+  `openrouter/qwen/qwen3-coder` (Technical specialist)
 
-- For fast responses, lightweight tasks, short summaries, and high-speed execution, use:
-  `stepfun/step-3.5-flash:free` (fast)
+- **Fast Responses / Lightweight Tasks:**
+  `openrouter/stepfun/step-3.5-flash` (Speed specialist)
 
-- For coding, debugging, scripting, and technical implementation, use:
-  `openrouter/qwen/qwen3-coder:free` (coding)
+- **Creative Writing / Nuance / Content Generation:**
+  `openrouter/meta-llama/llama-3.3-70b-instruct` (Style specialist)
 
-- For image, video, and multimodal understanding (UI, screenshots, visual reasoning), use:
-  `nvidia/nemotron-nano-12b-v2-vl:free` (vision)
+- **Privacy-Sensitive / High-Quality Reasoning:**
+  `openrouter/nvidia/nemotron-3-super-120b-a12b` (Secondary logic)
 
-- For low-cost general chat, creative writing, content generation, and nuanced language tasks, use:
-  `meta-llama/llama-3.3-70b-instruct:free` (fallback #1)
+- **Premium Fallback / Vision / Critical Failure Case:**
+  `openai-codex/gpt-5.4` (Quality specialist)
 
-- For For high-quality image understanding, critical tasks, edge cases, or when all other models fail, use:
-  `openai-codex/gpt-5.4` (premium fallback)
+## Routing Rules
 
-## Routing rules
+- **Prefer the cheapest sufficient model.**
+- **Route by task type first.**
+- **Escalate only when output quality, reasoning depth, or reliability requires it.**
 
-- Prefer the cheapest sufficient model.
-- Route by task type first, not fallback order.
-- Use specialist models when the task clearly matches.
-- Escalate only when output quality, reasoning depth, or reliability requires it.
-- Do not use premium models for routine tasks.
+- If the task is **coding-related** → use `qwen3-coder`.
+- If the task involves **vision/images** → use `gemini-3-flash-preview`. 
+  - *Escalate to `gpt-5.4` if vision quality is insufficient.*
+- If the task is **simple/fast** → use `step-3.5-flash`.
+- If the task is **general but requires quality** → use `gemini-3-flash-preview`.
+- If additional **reasoning depth** is needed → use `qwen3.6-plus:preview`.
+- If the task requires **creativity or tone adaptation** → use `llama-3.3-70b-instruct`.
 
-- If the task is coding-related → use `qwen3-coder`.
-- If the task involves images/video → use `nemotron-nano-vl`. escalate to `openai-codex/gpt-5.4` if needed
-- If the task is simple and speed matters → use `step-3.5-flash`.
+## Escalation Path
 
-- If the task is general but requires quality (Default / balanced)→ use `qwen3.6-plus`.
-- If additional reasoning depth is needed → escalate to `nemotron-3-super`.
+**Trigger escalation if:** The answer is weak, the model misses context, or the task is mission-critical.
 
-- If the task requires creativity or tone nuance, Cheap general → use `llama-3.3-70b`.
+1. `step-3.5-flash` → `gemini-3-flash-preview`
+2. `gemini-3-flash-preview` → `qwen3.6-plus:preview`
+3. `qwen3.6-plus:preview` → `nemotron-3-super-120b`
+4. `nemotron-3-super-120b` → `gpt-5.4`
 
-## Escalation rules 
-- the answer is weak or inconsistent
-- the model misses context
-- the task requires unusually deep reasoning
-- the task is critical and failure is costly
-- vision quality is insufficient
+## Preferred Decision Flow
 
-Escalation path:
+1. **Vision task?**
+   → `gemini-3-flash-preview`
+   → if weak / critical visual reasoning: `gpt-5.4`
 
-`step-3.5-flash` → `qwen3.6-plus`
-`qwen3.6-plus` → `nemotron-120b`
-`nemotron-120b` → `hermes-405b`
-`nemotron-nano-vl` →` gpt-5.4`
-any critical failure case → `gpt-5.4`
-
-- Use `openai-codex/gpt-5.4` ONLY when:
-  - task is critical
-  - vision quality matters
-  - all other models failed
-  - or explicitly requested
-
-- NEVER use premium model for:
-  - simple queries
-  - formatting
-  - short summaries
-  - file reading/writing
-  - basic transformations
-
-## Preferred decision flow
-(alias used)
-1. Vision task?
-   → `nemotron-nano-vl`
-   → if weak / OCR-heavy / critical visual reasoning: gpt-5.4
-
-2. Coding / debugging / scripts?
+2. **Coding / Debugging?**
    → `qwen3-coder`
-   → if reasoning is unusually deep or architecture-heavy: hermes-405b or gpt-5.4
+   → if reasoning is unusually deep: `qwen3.6-plus:preview` or `gpt-5.4`
 
-3. Very simple / fast turnaround?
+3. **Very simple / Fast turnaround?**
    → `step-3.5-flash`
 
-4. Creative / nuanced writing / tone adaptation?
-   → `llama-3.3-70b`
+4. **Creative / Nuanced writing?**
+   → `llama-3.3-70b-instruct`
 
-5. General default task?
-   → `qwen3.6-plus`
+5. **General default task?**
+   → `gemini-3-flash-preview`
 
-6. General task but response quality is weak, inconsistent, or privacy-sensitive?
-   → `nemotron-120b`
+6. **Privacy-sensitive task?**
+   → `nemotron-3-super-120b` or `gpt-5.4`
 
-7. Very hard reasoning / long-context synthesis / complex strategy?
-   → `hermes-405b`
-
-8. Critical or premium-only case?
+7. **Critical or premium-only case?**
    → `gpt-5.4`
-
-
+   
 ## Privacy rule
 
 - If privacy-sensitive task:
