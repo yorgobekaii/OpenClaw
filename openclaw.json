@@ -1,10 +1,10 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.4.1",
-    "lastTouchedAt": "2026-04-02T08:36:40.554Z"
+    "lastTouchedAt": "2026-04-13T07:43:22.365Z"
   },
   "wizard": {
-    "lastRunAt": "2026-04-02T08:36:40.468Z",
+    "lastRunAt": "2026-04-13T07:43:22.269Z",
     "lastRunVersion": "2026.4.1",
     "lastRunCommand": "onboard",
     "lastRunMode": "local"
@@ -106,30 +106,39 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/qwen/qwen3.6-plus:free",
+        "primary": "openai-codex/gpt-5.4",
         "fallbacks": [
           "openrouter/stepfun/step-3.5-flash:free",
           "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
           "openrouter/qwen/qwen3-coder:free",
-          "openrouter/meta-llama/llama-3.3-70b-instruct:free"
+          "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+          "openrouter/qwen/qwen3.6-plus:free"
         ]
       },
       "models": {
         "openai-codex/gpt-5.4": {
           "alias": "gpt-5.4",
-          "params": { "cacheRetention": "long" } 
+          "params": {
+            "cacheRetention": "long"
+          }
         },
         "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
           "alias": "nemotron-120b",
-          "params": { "cacheRetention": "long" }
+          "params": {
+            "cacheRetention": "long"
+          }
         },
         "openrouter/qwen/qwen3.6-plus:free": {
           "alias": "qwen3.6-plus",
-          "params": { "cacheRetention": "long" }
+          "params": {
+            "cacheRetention": "long"
+          }
         },
         "openrouter/stepfun/step-3.5-flash:free": {
-          "alias":"step-3.5-flash",
-          "params": { "cacheRetention": "short" }
+          "alias": "step-3.5-flash",
+          "params": {
+            "cacheRetention": "short"
+          }
         },
         "openrouter/qwen/qwen3-coder:free": {
           "alias": "qwen3-coder"
@@ -241,9 +250,9 @@
   },
   "diagnostics": {
     "cacheTrace": {
-    "enabled": true
-}
-},
+      "enabled": true
+    }
+  },
   "hooks": {
     "internal": {
       "enabled": true,
