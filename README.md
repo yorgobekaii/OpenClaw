@@ -217,15 +217,14 @@ OpenClaw uses **task-based routing** to select the most efficient model based on
 ### 🔹 Model Roles
 
 | Model | Role | Use Case |
-|------|------|---------|
-| `qwen3.6-plus` | Default | General tasks, analysis, structured responses |
-| `step-3.5-flash` | Fast | Simple queries, quick summaries |
-| `qwen3-coder` | Coding | Debugging, scripts, implementation |
-| `nemotron-nano-vl` | Vision | Images, UI, screenshots |
-| `llama-3.3-70b` | Creative | Writing, tone, content generation |
-| `nemotron-120b` | Reasoning | Stronger logic, privacy-sensitive tasks |
-| `hermes-405b` | Deep reasoning | Complex problems, long-context tasks |
-| `gpt-5.4` | Premium | Critical tasks, fallback, high-precision vision |
+| :--- | :--- | :--- |
+| `gemini-3-flash-preview` | **Default** | General tasks, large context, vision, multimodal |
+| `step-3.5-flash` | **Fast** | Simple queries, quick summaries, high-speed execution |
+| `qwen3-coder` | **Coding** | Debugging, scripts, technical implementation |
+| `qwen3.6-plus:preview` | **Reasoning** | Analysis, strategy, deep structured thinking |
+| `llama-3.3-70b-instruct` | **Creative** | Nuanced writing, tone adaptation, content generation |
+| `nemotron-3-super-120b` | **Privacy** | Privacy-sensitive tasks, secondary logic, synthesis |
+| `gpt-5.4` | **Premium** | Critical tasks, high-precision vision, ultimate fallback |
 
 ---
 
