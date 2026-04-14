@@ -32,7 +32,7 @@
         "apiKey": "${GOOGLE_API_KEY}",
         "models": [
           {
-            "id": "gemini-3.1-flash-lite-preview",
+            "id": "gemini-3-flash-preview",
             "name": "Gemini Flash",
             "input": [
               "text"
@@ -50,35 +50,35 @@
         "apiKey": "${OPENROUTER_API_KEY}",
         "models": [
           {
-            "id": "qwen/qwen3.6-plus:free",
+            "id": "qwen/qwen3.6-plus",
             "name": "Qwen 3.6 Plus",
             "input": [
               "text"
             ]
           },
           {
-            "id": "nvidia/nemotron-3-super-120b-a12b:free",
+            "id": "nvidia/nemotron-3-super-120b-a12b",
             "name": "Nemotron 120B",
             "input": [
               "text"
             ]
           },
           {
-            "id": "stepfun/step-3.5-flash:free",
+            "id": "stepfun/step-3.5-flash",
             "name": "Step 3.5 Flash",
             "input": [
               "text"
             ]
           },
           {
-            "id": "qwen/qwen3-coder:free",
+            "id": "qwen/qwen3-coder",
             "name": "Qwen Coder",
             "input": [
               "text"
             ]
           },
           {
-            "id": "nvidia/nemotron-nano-12b-v2-vl:free",
+            "id": "nvidia/nemotron-nano-12b-v2-vl",
             "name": "Nemotron Nano VL",
             "input": [
               "text",
@@ -86,14 +86,14 @@
             ]
           },
           {
-            "id": "meta-llama/llama-3.3-70b-instruct:free",
+            "id": "meta-llama/llama-3.3-70b-instruct",
             "name": "LLaMA 70B",
             "input": [
               "text"
             ]
           },
           {
-            "id": "nousresearch/hermes-3-llama-3.1-405b:free",
+            "id": "nousresearch/hermes-3-llama-3.1-405b",
             "name": "Hermes 405B",
             "input": [
               "text"
@@ -106,13 +106,15 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openai-codex/gpt-5.4",
+        "primary": "google/gemini-3-flash-preview",
         "fallbacks": [
-          "openrouter/stepfun/step-3.5-flash:free",
-          "openrouter/nvidia/nemotron-3-super-120b-a12b:free",
-          "openrouter/qwen/qwen3-coder:free",
-          "openrouter/meta-llama/llama-3.3-70b-instruct:free",
-          "openrouter/qwen/qwen3.6-plus:free"
+          "openai-codex/gpt-5.4",
+          "openrouter/stepfun/step-3.5-flash",
+          "openrouter/qwen/qwen3.6-plus:preview",
+          "openrouter/nvidia/nemotron-3-super-120b-a12b",
+          "openrouter/meta-llama/llama-3.3-70b-instruct",
+          "openrouter/qwen/qwen3-coder"
+          
         ]
       },
       "models": {
@@ -122,34 +124,34 @@
             "cacheRetention": "long"
           }
         },
-        "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
+        "openrouter/nvidia/nemotron-3-super-120b-a12b": {
           "alias": "nemotron-120b",
           "params": {
             "cacheRetention": "long"
           }
         },
-        "openrouter/qwen/qwen3.6-plus:free": {
+        "openrouter/qwen/qwen3.6-plus:preview": {
           "alias": "qwen3.6-plus",
           "params": {
             "cacheRetention": "long"
           }
         },
-        "openrouter/stepfun/step-3.5-flash:free": {
+        "openrouter/stepfun/step-3.5-flash": {
           "alias": "step-3.5-flash",
           "params": {
             "cacheRetention": "short"
           }
         },
-        "openrouter/qwen/qwen3-coder:free": {
+        "openrouter/qwen/qwen3-coder": {
           "alias": "qwen3-coder"
         },
-        "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {
+        "openrouter/nvidia/nemotron-nano-12b-v2-vl": {
           "alias": "nemotron-nano-vl"
         },
-        "openrouter/meta-llama/llama-3.3-70b-instruct:free": {
+        "openrouter/meta-llama/llama-3.3-70b-instruct": {
           "alias": "llama-3.3-70b"
         },
-        "openrouter/nousresearch/hermes-3-llama-3.1-405b:free": {
+        "openrouter/nousresearch/hermes-3-llama-3.1-405b": {
           "alias": "hermes-405b"
         }
       },
